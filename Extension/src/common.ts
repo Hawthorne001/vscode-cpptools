@@ -1450,7 +1450,7 @@ export function findPowerShell(): string | undefined {
                     return name;
                 }
             } catch (e) {
-                return undefined;
+                // ignore, try next candidate
             }
         }
     }
@@ -1813,4 +1813,8 @@ export function findExePathInArgs(args: CommandString[]): string | undefined {
     }
 
     return undefined;
+}
+
+export function getVsCodeVersion(): number[] {
+    return vscode.version.split('.').map(num => parseInt(num, undefined));
 }
